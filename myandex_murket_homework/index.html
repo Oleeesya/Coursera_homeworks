@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мяндекс.Муррркет</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+
+        header,
+        section {
+            max-width: 992px;
+            margin: 50px auto 70px;
+        }
+
+        li img:hover {
+            opacity: 0.7;
+        }
+
+        .name_cat {
+            display: block;
+            text-decoration: none;
+            text-shadow: 4px 4px 10px rgb(173, 160, 160);
+            color: rgb(25, 29, 29);
+            font-family: 'Open Sans', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .name_cat:hover {
+            color: #f00;
+        }
+
+        .description {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .characteristic {
+            text-shadow: 4px 4px 10px rgb(173, 160, 160);
+            color: rgb(0, 0, 0);
+            font-family: 'Caveat', cursive;
+            text-align: justify;
+        }
+
+        /*плитка*/
+        ul .description,
+        ul .characteristic,
+        ul .content {
+            width: 100%;
+            margin: auto;
+        }
+
+        li a img {
+            width: 100%;
+        }
+
+        ul {
+            display: inline-block;
+            width: 24.5%;
+            vertical-align: top;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+
+        /*rating*/
+        .rating {
+            border: none;
+        }
+
+        .rating_caption {
+            padding: 0;
+        }
+
+        .rating_star {
+            -webkit-appearance: none;
+            position: absolute;
+            height: 2em;
+            background-size: 2em 1.9em;
+            font-size: inherit;
+            background-repeat: repeat-x;
+        }
+
+        .rating_input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+        }
+
+        .rating_star:focus {
+            outline: none;
+        }
+
+        .rating_input:checked+.rating_star,
+        .rating_star:hover {
+            background-image: url(img/on.svg);
+            height: 2em;
+        }
+
+        .rating_stat:hover~.rating_star {
+            background-image: url(img/off.svg);
+        }
+
+        .rating_group {
+            position: relative;
+            width: 10em;
+            height: 2em;
+            background-image: url(img/off.svg);
+            background-size: 2em 1.9em;
+            margin-bottom: 20px; 
+            background-repeat: repeat-x;
+        }
+
+       
+
+        /*Option rating*/
+        .rating_star:nth-of-type(1) {
+            z-index: 10;
+            width: 1em;
+        }
+
+        .rating_star:nth-of-type(2) {
+            z-index: 9;
+            width: 2em;
+        }
+
+        .rating_star:nth-of-type(3) {
+            z-index: 8;
+            width: 3em;
+        }
+
+        .rating_star:nth-of-type(4) {
+            z-index: 7;
+            width: 4em;
+        }
+
+        .rating_star:nth-of-type(5) {
+            z-index: 6;
+            width: 5em;
+        }
+
+        .rating_star:nth-of-type(6) {
+            z-index: 5;
+            width: 6em;
+        }
+
+        .rating_star:nth-of-type(7) {
+            z-index: 4;
+            width: 7em;
+        }
+
+        .rating_star:nth-of-type(8) {
+            z-index: 3;
+            width: 8em;
+        }
+
+        .rating_star:nth-of-type(9) {
+            z-index: 2;
+            width: 9em;
+        }
+
+        .rating_star:nth-of-type(10) {
+            z-index: 1;
+            width: 10em;
+        }
+
+        /*меню кнопки*/
+
+        .menu_tile {
+            -webkit-appearance: none;
+            height: 35px;
+            width: 35px;
+            background-image: url(img/menu_tile.jpg);
+        }
+
+        .menu_list {
+            -webkit-appearance: none;
+            height: 35px;
+            width: 35px;
+            background-image: url(img/menu_list.png);
+        }
+
+        .menu_list:checked,
+        .menu_tile:checked,
+        .menu_list:active,
+        .menu_tile:active {
+            outline: none;
+        }
+
+        .menu_list:hover,
+        .menu_tile:hover {
+            border: 2px solid rgb(223, 181, 181);
+        }
+
+        .menu_list,
+        .menu_tile {
+            display: block;
+        }
+
+
+        /*список*/
+
+        #menu_list:checked~ul {
+            display: initial;
+        }
+
+        #menu_list:checked~ul .description {
+            width: 33.3333%;
+            float: left;
+
+        }
+
+        #menu_list:checked~ul .characteristic {
+            width: 33.3333%;
+            float: right;
+            height: 330px;
+        }
+
+        #menu_list:checked~ul .content {
+            width: 33.3333%;
+            height: 330px;
+            float: left;
+        }
+        #menu_list:checked~ul img {
+            width: auto;
+        }
+        @media screen and (max-width: 768px) {
+            ul {
+                width: 32.5%;
+            }
+        }
+     
+    </style>
+
+
+</head>
+
+<body>
+    <section>
+
+        <input class="menu_tile" type="radio" name="type-view" id="menu_tile" checked>
+        <input class="menu_list" type="radio" name="type-view" id="menu_list">
+
+
+        <label class="controls_label" for="menu_tile"></label>
+        <label class="controls_label" for="menu_list"></label>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Persian" target="_blank">
+                        <img src="img/Персидская _1.jpg" alt="Персидская (Persian) кошка."
+                            title="Персидская (Persian) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <div class="description">
+                        <li><a href="http://tomall.ru/cat/Persian" target="_blank" class="name_cat"
+                                title="Персидская">Персидская</a></li>
+                        <li>I — persian & exotic</li>
+                        <li>
+                            <fieldset class="rating">
+                                <legend class="rating_caption"></legend>
+                                <div class="rating_group">
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-1" value="1">
+                                    <label class="rating_star" for="Persian-1" aria-label="Ужасно"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-2" value="2">
+                                    <label class="rating_star" for="Persian-2" aria-label="Сносно"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-3" value="3">
+                                    <label class="rating_star" for="Persian-3" aria-label="Нормально"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-4" value="4">
+                                    <label class="rating_star" for="Persian-4" aria-label="Хорошо"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-5" value="5">
+                                    <label class="rating_star" for="Persian-5" aria-label="Отлично"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-6" value="6">
+                                    <label class="rating_star" for="Persian-6" aria-label="Ужасно"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-7" value="7">
+                                    <label class="rating_star" for="Persian-7" aria-label="Сносно"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-8" value="8">
+                                    <label class="rating_star" for="Persian-8" aria-label="Нормально"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-9" value="9">
+                                    <label class="rating_star" for="Persian-9" aria-label="Хорошо"></label>
+
+                                    <input class="rating_input" type="radio" name="Persian" id="Persian-10" value="10">
+                                    <label class="rating_star" for="Persian-10" aria-label="Отлично"></label>
+
+                                    <div class="rating_focus"></div>
+                                </div>
+                            </fieldset>
+                        </li>
+                        <li>2т.р. - 90т.р.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Пер&shy;сид&shy;ские ко&shy;ты спо&shy;кой&shy;ные, при&shy;у&shy;че&shy;ны
+                    к
+                    за&shy;бо&shy;те и лас&shy;ке, лю&shy;бят де&shy;тей. И
+                    не&shy;смот&shy;ря на не&shy;по&shy;во&shy;рот&shy;ли&shy;вый вид, они до&shy;воль&shy;но
+                    рез&shy;вы,
+                    лю&shy;бят ве&shy;сти ак&shy;тив&shy;ную жизнь.</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Selkirk_Rex" target="_blank"><img src="img/Селкирк-рекс_2.jpg"
+                            alt="Селкирк-рекс (Selkirk Rex) кошка." title="Селкирк-рекс (Selkirk Rex) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Selkirk_Rex" target="_blank" class="name_cat"
+                            title="Селкирк-рекс">Селкирк-рекс</a>
+                    </li>
+                    <li>2 — Semi-Longhair</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-1" value="1">
+                                <label class="rating_star" for="SelkirkRex-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-2" value="2">
+                                <label class="rating_star" for="SelkirkRe-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-3" value="3">
+                                <label class="rating_star" for="SelkirkRe-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-4" value="4">
+                                <label class="rating_star" for="SelkirkRe-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-5" value="5">
+                                <label class="rating_star" for="SelkirkRe-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-6" value="6">
+                                <label class="rating_star" for="SelkirkRe-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-7" value="7">
+                                <label class="rating_star" for="SelkirkRe-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-8" value="8">
+                                <label class="rating_star" for="SelkirkRe-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-9" value="9">
+                                <label class="rating_star" for="SelkirkRe-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="SelkirkRe" id="SelkirkRe-10" value="10">
+                                <label class="rating_star" for="SelkirkRe-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>15т.р. - 40т.р.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Ха&shy;рак&shy;тер сел&shy;кирк-рек&shy;сов очень
+                    по&shy;кла&shy;ди&shy;стый:
+                    эти
+                    ко&shy;ты дру&shy;же&shy;люб&shy;ны, обо&shy;жа&shy;ют
+                    участ&shy;во&shy;вать в иг&shy;рах, осо&shy;бен&shy;но, ес&shy;ли в них участ&shy;ву&shy;ет
+                    хо&shy;зя&shy;ин. Во&shy;об&shy;ще, эти кош&shy;ки ре&shy;ко&shy;мен&shy;до&shy;ва&shy;ны для
+                    со&shy;дер&shy;жа&shy;ния в се&shy;мьях с детьми, где кош&shy;ка прак&shy;ти&shy;че&shy;ски
+                    ни&shy;ко&shy;г&shy;да не бу&shy;дет од&shy;на.</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Cymric" target="_blank"><img src="img/Кимрик _1.jpg"
+                            alt="Кимрик (длинношерстный манкс) (Cymric) кошка."
+                            title="Кимрик (длинношерстный манкс) (Cymric) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Cymric" target="_blank" class="name_cat"
+                            title="Кимрик (длинношерстный манкс)">Кимрик (длинношерстный манкс)</a>
+                    </li>
+                    <li>III - shorthair & somali</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-1" value="1">
+                                <label class="rating_star" for="Кимрик-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-2" value="2">
+                                <label class="rating_star" for="Кимрик-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-3" value="3">
+                                <label class="rating_star" for="Кимрик-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-4" value="4">
+                                <label class="rating_star" for="Кимрик-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-5" value="5">
+                                <label class="rating_star" for="Кимрик-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-6" value="6">
+                                <label class="rating_star" for="Кимрик-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-7" value="7">
+                                <label class="rating_star" for="Кимрик-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-8" value="8">
+                                <label class="rating_star" for="Кимрик-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-9" value="9">
+                                <label class="rating_star" for="Кимрик-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Кимрик" id="Кимрик-10" value="10">
+                                <label class="rating_star" for="Кимрик-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>от 100т.р.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Кимр&shy;ские кош&shy;ки не агрес&shy;сив&shy;ны, быст&shy;ро
+                    при&shy;вя&shy;зы&shy;ва&shy;ют&shy;ся к лю&shy;дям. У них хо&shy;ро&shy;шая па&shy;мять,
+                    они ум&shy;ны, до&shy;ста&shy;точ&shy;но дру&shy;же&shy;люб&shy;ны, об&shy;ла&shy;да&shy;ют
+                    спо&shy;кой&shy;ным и по&shy;слуш&shy;ным ха&shy;рак&shy;те&shy;ром.</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Korat" target="_blank"><img src="img/Корат _1.jpg"
+                            alt="Корат (Korat) кошка." title="Корат (Korat) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Korat" target="_blank" class="name_cat"
+                            title="Корат (Korat) кошка.">Корат (Korat) кошка.</a>
+                    </li>
+                    <li>Короткошёрстная</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-1" value="1">
+                                <label class="rating_star" for="Korat-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-2" value="2">
+                                <label class="rating_star" for="Korat-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-3" value="3">
+                                <label class="rating_star" for="Korat-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-4" value="4">
+                                <label class="rating_star" for="Korat-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-5" value="5">
+                                <label class="rating_star" for="Korat-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-6" value="6">
+                                <label class="rating_star" for="Korat-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-7" value="7">
+                                <label class="rating_star" for="Korat-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-8" value="8">
+                                <label class="rating_star" for="Korat-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-9" value="9">
+                                <label class="rating_star" for="Korat-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Korat" id="Korat-10" value="10">
+                                <label class="rating_star" for="Korat-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>от 100т.р.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">По ха&shy;рак&shy;те&shy;ру ко&shy;ра&shy;ты дру&shy;же&shy;люб&shy;ные,
+                    спо&shy;кой&shy;ные и лас&shy;ко&shy;вые су&shy;ще&shy;ства. Хо&shy;ро&shy;шо
+                    ужи&shy;ва&shy;ют&shy;ся
+                    с дру&shy;ги&shy;ми жи&shy;вот&shy;ны&shy;ми, не тре&shy;бо&shy;ва&shy;тель&shy;ны к
+                    про&shy;гул&shy;кам. Од&shy;на&shy;ко, не вы&shy;но&shy;сят лиш&shy;не&shy;го шу&shy;ма,
+                    по&shy;это&shy;му вряд ли
+                    смо&shy;гут чув&shy;ство&shy;вать се&shy;бя ком&shy;форт&shy;но в до&shy;ме с ма&shy;леньки&shy;ми
+                    детьми.</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/York_Chocolate" target="_blank"><img
+                            src="img/Йорк (Йоркская шоколадная)_3.jpg"
+                            alt="Йорк (Йоркская шоколадная) (York Chocolate) кошка."
+                            title="Йорк (Йоркская шоколадная) (York Chocolate) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/York_Chocolate" target="_blank" class="name_cat"
+                            title="Йорк (Йоркская шоколадная)">Йорк (Йоркская шоколадная)</a></li>
+                    <li>2 - Semi-Longhair</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-1"
+                                    value="1">
+                                <label class="rating_star" for="YorkChocolate-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-2"
+                                    value="2">
+                                <label class="rating_star" for="YorkChocolate-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-3"
+                                    value="3">
+                                <label class="rating_star" for="YorkChocolate-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-4"
+                                    value="4">
+                                <label class="rating_star" for="YorkChocolate-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-5"
+                                    value="5">
+                                <label class="rating_star" for="YorkChocolate-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-6"
+                                    value="6">
+                                <label class="rating_star" for="YorkChocolate-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-7"
+                                    value="7">
+                                <label class="rating_star" for="YorkChocolate-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-8"
+                                    value="8">
+                                <label class="rating_star" for="YorkChocolate-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-9"
+                                    value="9">
+                                <label class="rating_star" for="YorkChocolate-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="YorkChocolate" id="YorkChocolate-10"
+                                    value="10">
+                                <label class="rating_star" for="YorkChocolate-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>от 100т.р</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Кош&shy;ки по&shy;ро&shy;ды йорк&shy;ская шо&shy;ко&shy;лад&shy;ная
+                    не&shy;тре&shy;бо&shy;ва&shy;тель&shy;ны, уход за ни&shy;ми не&shy;слож&shy;ный.
+                    Ха&shy;рак&shy;тер — по&shy;дат&shy;ли&shy;вый, лас&shy;ко&shy;вый, да&shy;же роб&shy;кий. Но
+                    они
+                    об&shy;щи&shy;тель&shy;ны, при&shy;вяз&shy;чи&shy;вы к хо&shy;зя&shy;и&shy;ну и
+                    ми&shy;ро&shy;лю&shy;би&shy;вы —
+                    пре&shy;крас&shy;ные кош&shy;ки-спут&shy;ни&shy;ки..</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Javanese" target="_blank"><img src="img/Яванская_1.jpg"
+                            alt="Яванская (яванез) (Javanese) кошка." title="Яванская (яванез) (Javanese) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Javanese" target="_blank" class="name_cat"
+                            title="Яванская (яванез)">Яванская (яванез)</a>
+                    </li>
+                    <li>Короткошёрстная</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-1" value="1">
+                                <label class="rating_star" for="Javanese-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-2" value="2">
+                                <label class="rating_star" for="Javanese-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-3" value="3">
+                                <label class="rating_star" for="Javanese-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-4" value="4">
+                                <label class="rating_star" for="Javanese-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-5" value="5">
+                                <label class="rating_star" for="Javanese-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-6" value="6">
+                                <label class="rating_star" for="Javanese-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-7" value="7">
+                                <label class="rating_star" for="Javanese-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-8" value="8">
+                                <label class="rating_star" for="Javanese-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-9" value="9">
+                                <label class="rating_star" for="Javanese-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Javanese" id="Javanese-10" value="10">
+                                <label class="rating_star" for="Javanese-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>15т.р. - 40т.р.</li>
+
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Ява&shy;не&shy;зы не&shy;ве&shy;ро&shy;ят&shy;но
+                    об&shy;щи&shy;тель&shy;ны,
+                    без
+                    сво&shy;их хо&shy;зя&shy;ев не мо&shy;гут про&shy;жить и дня. Ко&shy;ты и
+                    осо&shy;бен&shy;но кош&shy;ки этой по&shy;ро&shy;ды долж&shy;ны по&shy;сто&shy;ян&shy;но
+                    по&shy;лу&shy;чать до&shy;ка&shy;за&shy;тельства то&shy;го, что че&shy;ло&shy;век их лю&shy;бит.
+                    Они
+                    бес&shy;ко&shy;неч&shy;но лас&shy;ко&shy;вы, очень це&shy;нят так&shy;тиль&shy;ный кон&shy;такт.
+                </div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Norwegian_Forest" target="_blank"><img
+                            src="img/Норвежская лесная_1.jpg" alt="Норвежская лесная (Norwegian Forest) кошка."
+                            title="Норвежская лесная (Norwegian Forest) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Norwegian_Forest" target="_blank" class="name_cat"
+                            title="Норвежская лесная">Норвежская лесная</a>
+                    </li>
+                    <li>2 — Semi-Longhair</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-1"
+                                    value="1">
+                                <label class="rating_star" for="NorwegianForest-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-2"
+                                    value="2">
+                                <label class="rating_star" for="NorwegianForest-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-3"
+                                    value="3">
+                                <label class="rating_star" for="NorwegianForest-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-4"
+                                    value="4">
+                                <label class="rating_star" for="NorwegianForest-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-5"
+                                    value="5">
+                                <label class="rating_star" for="NorwegianForest-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-6"
+                                    value="6">
+                                <label class="rating_star" for="NorwegianForest-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-7"
+                                    value="7">
+                                <label class="rating_star" for="NorwegianForest-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-8"
+                                    value="8">
+                                <label class="rating_star" for="NorwegianForest-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-9"
+                                    value="9">
+                                <label class="rating_star" for="NorwegianForest-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="NorwegianForest" id="NorwegianForest-10"
+                                    value="10">
+                                <label class="rating_star" for="NorwegianForest-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>10т.р. - 50т.р.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Ха&shy;рак&shy;тер спо&shy;кой&shy;ный, нор&shy;веж&shy;ские лес&shy;ные
+                    не&shy;за&shy;ви&shy;си&shy;мы, бла&shy;го&shy;род&shy;ны, не&shy;зло&shy;па&shy;мят&shy;ны. Они
+                    до&shy;воль&shy;но ак&shy;тив&shy;ны, от&shy;лич&shy;ные охот&shy;ни&shy;ки, лю&shy;бят
+                    ла&shy;зать
+                    по
+                    де&shy;ре&shy;вьям, как бел&shy;ки. Нор&shy;веж&shy;ские кош&shy;ки очень
+                    лю&shy;бо&shy;зна&shy;тель&shy;ны, ум&shy;ны.</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Scottish_Fold_LH" target="_blank"><img
+                            src="img/Скоттиш фолд длинношерстный_2.jpg"
+                            alt="Скоттиш фолд длинношерстный (Хайленд-фолд) (Scottish Fold LH) кошка."
+                            title="Скоттиш фолд длинношерстный (Хайленд-фолд) (Scottish Fold LH) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Scottish_Fold_LH" target="_blank" class="name_cat"
+                            title="Скоттиш фолд длинношерстный">Скоттиш фолд длинношерстный</a></li>
+                    <li>LH (длинношерстные)</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-1"
+                                    value="1">
+                                <label class="rating_star" for="ScottishFoldLH-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-2"
+                                    value="2">
+                                <label class="rating_star" for="ScottishFoldLH-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-3"
+                                    value="3">
+                                <label class="rating_star" for="ScottishFoldLH-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-4"
+                                    value="4">
+                                <label class="rating_star" for="ScottishFoldLH-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-5"
+                                    value="5">
+                                <label class="rating_star" for="ScottishFoldLH-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-6"
+                                    value="6">
+                                <label class="rating_star" for="ScottishFoldLH-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-7"
+                                    value="7">
+                                <label class="rating_star" for="ScottishFoldLH-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-8"
+                                    value="8">
+                                <label class="rating_star" for="ScottishFoldLH-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-9"
+                                    value="9">
+                                <label class="rating_star" for="ScottishFoldLH-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="ScottishFoldLH" id="ScottishFoldLH-10"
+                                    value="10">
+                                <label class="rating_star" for="ScottishFoldLH-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>5т.р. - 30т.р</li>
+
+
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Ха&shy;рак&shy;тер у ко&shy;шек шот&shy;ланд&shy;ской по&shy;ро&shy;ды
+                    по&shy;кла&shy;ди&shy;стый, не злоб&shy;ный. Го&shy;лос
+                    кош&shy;ки не&shy;мно&shy;го не&shy;при&shy;вы&shy;чен, он на&shy;по&shy;ми&shy;на&shy;ет скрип,
+                    но
+                    хо&shy;зя&shy;е&shy;ва под&shy;чер&shy;ки&shy;ва&shy;ют, что этот факт не
+                    яв&shy;ля&shy;ет&shy;ся
+                    от&shy;тал&shy;ки&shy;ва&shy;ю&shy;щим.</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Ragdoll" target="_blank"><img src="img/Рэгдолл_3.jpg"
+                            alt="Рэгдолл (Ragdoll) кошка." title="Рэгдолл (Ragdoll) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Ragdoll" target="_blank" class="name_cat"
+                            title="Рэгдолл">Рэгдолл</a></li>
+                    <li>Shorthaired</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-1" value="1">
+                                <label class="rating_star" for="Ragdoll-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-2" value="2">
+                                <label class="rating_star" for="Ragdoll-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-3" value="3">
+                                <label class="rating_star" for="Ragdoll-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-4" value="4">
+                                <label class="rating_star" for="Ragdoll-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-5" value="5">
+                                <label class="rating_star" for="Ragdoll-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-6" value="6">
+                                <label class="rating_star" for="Ragdoll-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-7" value="7">
+                                <label class="rating_star" for="Ragdoll-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-8" value="8">
+                                <label class="rating_star" for="Ragdoll-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-9" value="9">
+                                <label class="rating_star" for="Ragdoll-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Ragdoll" id="Ragdoll-10" value="10">
+                                <label class="rating_star" for="Ragdoll-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>10т.р. -30т.р.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Рэ&shy;г&shy;долл – не&shy;ве&shy;ро&shy;ят&shy;но спо&shy;кой&shy;ная и
+                    дру&shy;же&shy;люб&shy;ная кош&shy;ка. Она мо&shy;жет по&shy;ка&shy;зать&shy;ся
+                    ле&shy;ни&shy;вой
+                    и флег&shy;ма&shy;тич&shy;ной, но это не так, ско&shy;рее со&shy;сто&shy;я&shy;ние ее ду&shy;ши
+                    мож&shy;но оха&shy;рак&shy;те&shy;ри&shy;зо&shy;вать сло&shy;вом
+                    «уми&shy;ро&shy;тво&shy;ре&shy;ние».
+                    Осо&shy;бен&shy;но ком&shy;форт&shy;но рэ&shy;г&shy;долл чув&shy;ству&shy;ет се&shy;бя,
+                    ко&shy;г&shy;да
+                    ря&shy;дом хо&shy;зя&shy;ин. Он для ко&shy;та – цен&shy;тр ми&shy;ро&shy;з&shy;да&shy;ния.</div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <div class="description">
+                    <a href="http://tomall.ru/cat/Pixiebob" target="_blank"><img src="img/Пиксибоб_3.jpg"
+                            alt="Пиксибоб (Pixiebob) кошка." title="Пиксибоб (Pixiebob) кошка."></a>
+                </div>
+            </li>
+            <li>
+                <ul class="content">
+                    <li><a href="http://tomall.ru/cat/Selkirk_Rex" target="_blank" class="name_cat"
+                            title="Пиксибоб (Pixiebob)">Пиксибоб (Pixiebob)</a>
+                    </li>
+                    <li>TICA</li>
+                    <li>
+                        <fieldset class="rating">
+                            <legend class="rating_caption"></legend>
+                            <div class="rating_group">
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-1" value="1">
+                                <label class="rating_star" for="Pixiebob-1" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-2" value="2">
+                                <label class="rating_star" for="Pixiebob-2" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-3" value="3">
+                                <label class="rating_star" for="Pixiebob-3" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-4" value="4">
+                                <label class="rating_star" for="Pixiebob-4" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-5" value="5">
+                                <label class="rating_star" for="Pixiebob-5" aria-label="Отлично"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-6" value="6">
+                                <label class="rating_star" for="Pixiebob-6" aria-label="Ужасно"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-7" value="7">
+                                <label class="rating_star" for="Pixiebob-7" aria-label="Сносно"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-8" value="8">
+                                <label class="rating_star" for="Pixiebob-8" aria-label="Нормально"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-9" value="9">
+                                <label class="rating_star" for="Pixiebob-9" aria-label="Хорошо"></label>
+
+                                <input class="rating_input" type="radio" name="Pixiebob" id="Pixiebob-10" value="10">
+                                <label class="rating_star" for="Pixiebob-10" aria-label="Отлично"></label>
+
+                                <div class="rating_focus"></div>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>20 т.р. 100т.р.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="characteristic">Эти кош&shy;ки так&shy;тич&shy;ны, спо&shy;кой&shy;ны,
+                    урав&shy;но&shy;ве&shy;шен&shy;ны. Об&shy;ла&shy;да&shy;ют хо&shy;ро&shy;шим умом,
+                    по&shy;слуш&shy;ны,
+                    очень при&shy;вя&shy;зы&shy;ва&shy;ют&shy;ся к хо&shy;зя&shy;и&shy;ну.
+                    Не&shy;при&shy;хот&shy;ли&shy;вы
+                    к усло&shy;ви&shy;ям про&shy;жи&shy;ва&shy;ния, не бо&shy;ят&shy;ся хо&shy;ло&shy;да, лю&shy;бят
+                    во&shy;ду.</div>
+            </li>
+        </ul>
+    </section>
+</body>
+
+</html>
