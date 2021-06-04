@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Бабуленькины котятки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Бабуленькины котятки</h1>
+        </header>
+        <section class="nav">
+            <input type="radio" class="Persian nav__input" name="name_cat" id="Persian-1" value="Persian">
+            <input type="radio" class="SelkirkRex nav__input" name="name_cat" id="SelkirkRex-1" value="SelkirkRex">
+            <input type="radio" class="Kimrick nav__input" name="name_cat" id="Kimrick-1" value="Kimrick">
+            <input type="radio" class="Korat nav__input" name="name_cat" id="Korat-1" value="Korat">
+            <input type="radio" class="YorkChocolate nav__input" name="name_cat" id="YorkChocolate-1"
+                value="YorkChocolate">
+            <input type="radio" class="Javanese nav__input" name="name_cat" id="Javanese-1" value="Javanese">
+            <input type="radio" class="NorwegianForest nav__input" name="name_cat" id="NorwegianForest-1"
+                value="NorwegianForest">
+            <input type="radio" class="ScottishFoldLH nav__input" name="name_cat" id="ScottishFoldLH-1"
+                value="ScottishFoldLH">
+            <input type="radio" class="Ragdoll nav__input" name="name_cat" id="Ragdoll-1" value="Ragdoll">
+            <input type="radio" class="Pixibob nav__input" name="name_cat" id="Pixibob-1" value="Pixibob">
+            <aside class="menu">
+                <label class="menu_name" for="YorkChocolate-1">Йоркская шоколадная</label>
+                <label class="menu_name" for="Kimrick-1">Кимрик</label>
+                <label class="menu_name" for="Korat-1">Корат</label>
+                <label class="menu_name" for="NorwegianForest-1">Норвежская лесная</label>
+                <label class="menu_name" for="Persian-1">Персидская</label>
+                <label class="menu_name" for="SelkirkRex-1">Селкирк-рекс</label>
+                <label class="menu_name" for="ScottishFoldLH-1">Скоттиш фолд длинношерстный</label>
+                <label class="menu_name" for="Javanese-1">Яванская</label>
+                <label class="menu_name" for="Ragdoll-1">Рэгдолл</label>
+                <label class="menu_name" for="Pixibob-1">Пиксибоб</label>
+
+            </aside>
+            <section class="gallery">
+                <article class="cats-item breed-type-1">
+                    <img src="img/Персидская _1.jpg" alt="Bony" title="Имя кота, возраст">
+                    <span class="cats-item__info">Боня, 8 лет</span>
+                </article>
+                <article class="cats-item breed-type-2">
+                    <img src="img/Селкирк-рекс_2.jpg" alt="Pushok" title="Имя кота, возраст">
+                    <span class="cats-item__info">Пушок, 5 лет</span>
+                </article>
+                <article class="cats-item breed-type-3">
+                    <img src="img/Скоттиш фолд длинношерстный_2.jpg" alt="Garfild" title="Имя кота, возраст">
+                    <span class="cats-item__info">Пыша, 15 лет</span>
+                </article>
+                <article class="cats-item breed-type-4">
+                    <img src="img/Корат _1.jpg" alt="Finik" title="Имя кота, возраст">
+                    <span class="cats-item__info">Финик, 4 лет</span>
+                </article>
+                <article class="cats-item breed-type-5">
+                    <img src="img/Йорк (Йоркская шоколадная)_3.jpg" alt="Tom" title="Имя кота, возраст">
+                    <span class="cats-item__info">Том, 10 лет</span>
+                </article>
+                <article class="cats-item breed-type-6">
+                    <img src="img/Норвежская лесная_1.jpg" alt="Carapka" title="Имя кота, возраст">
+                    <span class="cats-item__info">Каспер, 13 лет</span>
+                </article>
+                <article class="cats-item breed-type-7">
+                    <img src="img/Яванская_1.jpg" alt="Kasper" title="Имя кота, возраст">
+                    <span class="cats-item__info">Царапка, 9 лет</span>
+                </article>
+                <article class="cats-item breed-type-8">
+                    <img src="img/Кимрик _1.jpg" alt="Pyasha" title="Имя кота, возраст">
+                    <span class="cats-item__info">Гарфилд, 7 лет</span>
+                </article>
+                <article class="cats-item breed-type-9">
+                    <img src="img/Рэгдолл_3.jpg" alt="Rany" title="Имя кота, возраст">
+                    <span class="cats-item__info">Рени, 2 года</span>
+                </article>
+                <article class="cats-item breed-type-10">
+                    <img src="img/Пиксибоб_3.jpg" alt="Tosha" title="Имя кота, возраст">
+                    <span class="cats-item__info">Тоша, 1 год</span>
+                </article>
+            </section>
+            <aside class="ratting">
+                <p class="filter__name">Рейтинг</p>
+                <input id="q1" type="checkbox" name="sort">
+                <label for="q1" class="filter__name-label">по убыванию</label>
+
+                <div class="wrapper">
+                    <div class="item" data-value="3">
+                        <h5 class="rating__name">Йоркская шоколадная</h5>
+                        <div class="item_1" data-value="3">
+                        </div>
+                    </div>
+                    <div class="item" data-value="8">
+                        <h5 class="rating__name">Кимрик</h5>
+                        <div class="item_1" data-value="8">
+                        </div>
+                    </div>
+                    <div class="item" data-value="6">
+                        <h5 class="rating__name">Корат</h5>
+                        <div class="item_1" data-value="6">
+                        </div>
+                    </div>
+                    <div class="item" data-value="7">
+                        <h5 class="rating__name">Норвежская лесная</h5>
+                        <div class="item_1" data-value="7">
+                        </div>
+                    </div>
+                    <div class="item" data-value="9">
+                        <h5 class="rating__name">Персидская</h5>
+                        <div class="item_1" data-value="9">
+                        </div>
+                    </div>
+                    <div class="item" data-value="10">
+                        <h5 class="rating__name">Селкирк-рекс</h5>
+                        <div class="item_1" data-value="10">
+                        </div>
+                    </div>
+                    <div class="item" data-value="5">
+                        <h5 class="rating__name">Скоттиш фолд длинношерстный</h5>
+                        <div class="item_1" data-value="5">
+                        </div>
+                    </div>
+                    <div class="item" data-value="4">
+                        <h5 class="rating__name">Яванская</h5>
+                        <div class="item_1" data-value="4">
+                        </div>
+                    </div>
+                    <div class="item" data-value="2">
+                        <h5 class="rating__name">Рэгдолл</h5>
+                        <div class="item_1" data-value="2">
+                        </div>
+                    </div>
+                    <div class="item" data-value="1">
+                        <h5 class="rating__name">Пиксибоб</h5>
+                        <div class="item_1" data-value="1">
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+        </section>
+
+        <footer class="footer">
+
+            <div class="copyright">© ООО Бабуленькины котятки, 2015</div>
+            <address class="adres">Наш адрес: улица Котовая, д.5</address>
+        </footer>
+    </div>
+</body>
+
+</html>
